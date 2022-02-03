@@ -4,7 +4,6 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,7 +11,6 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.rusthell.greenshare.databinding.FragmentHomeBinding;
 import com.rusthell.greenshare.services.UtenteService;
 
 public class HomeFragment extends Fragment {
@@ -45,7 +43,14 @@ public class HomeFragment extends Fragment {
                 Fragment fragment = new CercaDestinazioneFragment();
                 System.out.println("Prima di iniziare la trasizione");
                 fragmentManager = getActivity().getSupportFragmentManager();
-                fragmentManager.beginTransaction().replace(R.id.fragment_container, fragment).commit();
+                fragmentManager.beginTransaction()
+                        .setCustomAnimations(R.anim.slide_in_bottom,
+                                R.anim.slide_out_top,
+                                R.anim.slide_in_top,
+                                R.anim.slide_out_bottom)
+                        .replace(R.id.fragment_container, fragment)
+                        .addToBackStack("HomeFragment")
+                        .commit();
                 System.out.println("Dopo transizione");
             }
         });

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/cercaDestinazioneFragment"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="?attr/fullscreenBackgroundColor"
+    android:background="#002233"
     android:theme="@style/ThemeOverlay.GreenShare.FullscreenContainer"
     tools:context=".CercaDestinazioneFragment">
 
@@ -14,4 +14,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="SDICFJHASLDHJSDGHASIUGDasjkhdas;iudhas;dsajdhasdkjb" />
-</FrameLayout>
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="right"
+        android:text="Button" />
+</RelativeLayout>
