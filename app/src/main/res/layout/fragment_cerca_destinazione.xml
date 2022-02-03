@@ -6,19 +6,54 @@
     android:id="@+id/cercaDestinazioneFragment"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="#002233"
+    android:gravity="top"
     android:theme="@style/ThemeOverlay.GreenShare.FullscreenContainer"
     tools:context=".CercaDestinazioneFragment">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
+    <EditText
+        android:id="@+id/cercaDestinazioneFragmentEditText"
+        android:layout_width="355dp"
         android:layout_height="wrap_content"
-        android:text="SDICFJHASLDHJSDGHASIUGDasjkhdas;iudhas;dsajdhasdkjb" />
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="4dp"
+        android:drawableLeft="@drawable/quantum_ic_search_grey600_24"
+        android:drawablePadding="20dp"
+        android:focusable="false"
+        android:hint="Dove Andiamo oggi?"
+        android:padding="20dp"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/button"
+    <fragment android:id="@+id/autocomplete_fragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:name="com.google.android.libraries.places.widget.AutocompleteSupportFragment"
+        />
+
+    <TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:id="@+id/textview"
+    android:layout_below="@id/cercaDestinazioneFragmentEditText"
+    android:textColor="@color/white"
+    android:padding="12dp"
+    android:layout_marginTop="32dp"
+    />
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="right"
-        android:text="Button" />
+        android:id="@+id/textview2"
+        android:layout_below="@id/textview"
+        android:textSize="24sp"
+        android:gravity="center"
+        android:padding="12dp"
+        />
+
+
+
 </RelativeLayout>

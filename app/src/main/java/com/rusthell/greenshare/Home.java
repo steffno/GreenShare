@@ -76,6 +76,7 @@ public class Home extends AppCompatActivity {
                         break;
                     case R.id.profileTab:
                         //TODO Crea Fragment
+                        fragment = new ProfileFragment();
                         Toast.makeText(Home.this, "Fragment Profilo", Toast.LENGTH_SHORT).show();
                         break;
                 }

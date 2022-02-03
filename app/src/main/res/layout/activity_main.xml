@@ -70,17 +70,16 @@
         android:backgroundTint="@color/purple_500"
         android:text="LOGIN" />
 
+
     <TextView
-        android:id="@+id/others"
+        android:id="@+id/oppure"
         android:layout_width="wrap_content"
         android:layout_height="39dp"
-        android:layout_above="@id/socialicons"
         android:layout_below="@id/loginbtn"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="221dp"
+        android:layout_marginTop="100dp"
         android:text="oppure"
         android:textStyle="bold" />
-
 
     <LinearLayout
         android:id="@+id/socialicons"

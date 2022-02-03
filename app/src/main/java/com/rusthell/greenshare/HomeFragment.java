@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.google.android.libraries.places.api.Places;
 import com.rusthell.greenshare.services.UtenteService;
 
 public class HomeFragment extends Fragment {
@@ -19,6 +20,8 @@ public class HomeFragment extends Fragment {
     private EditText editText;
     private UtenteService utenteService = new UtenteService();
     FragmentManager fragmentManager;
+
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -55,7 +58,7 @@ public class HomeFragment extends Fragment {
             }
         });
 
-
+        //places autocomplete
         return view;
     }
 
