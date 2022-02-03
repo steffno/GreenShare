@@ -1,79 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/relativeLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background"
     tools:context=".Home">
 
-    <TextView
+    <FrameLayout
+        android:id="@+id/fragment_container"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"/>
+
+
+    <nl.joery.animatedbottombar.AnimatedBottomBar
+        android:id="@+id/bottom_bar"
+        android:background="#FFF"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginEnd="50dp"
-        android:layout_marginBottom="50dp"
-        android:id="@+id/ciao"
-        android:text="Ciao"
-        android:textColor="@color/white"
-        android:textSize="35dp"
-        android:textStyle="bold"
-        android:layout_margin="50dp"
-        android:gravity="center"/>
+        app:abb_selectedTabType="icon"
+        app:abb_rippleEnabled="true"
+        app:abb_tabAnimation="slide"
+        app:abb_indicatorHeight="4dp"
+        app:abb_tabAnimationSelected="slide"
+        app:abb_indicatorAppearance="round"
+        app:abb_tabs="@menu/tabs"
+        app:abb_selectedIndex="0"
+        app:layout_constraintBottom_toBottomOf="parent" />
 
 
-    <EditText
-        android:id="@+id/cerca"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/ciao"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="10dp"
-        android:background="@drawable/rounded_edit_text"
-        android:drawableLeft="@drawable/quantum_ic_search_grey600_24"
-        android:drawablePadding="20dp"
-        android:hint="Dove Andiamo oggi?"
-        android:padding="20dp"
-        android:textColor="@color/white"
-        android:textColorHint="@color/white" />
-
-        <TextView
-          android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/textview"
-            android:layout_below="@id/ciao"
-            android:textColor="@color/white"
-            android:padding="12dp"
-            android:layout_marginTop="32dp"
-            />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/textview2"
-        android:layout_below="@id/textview"
-        android:textSize="24sp"
-        android:gravity="center"
-        android:padding="12dp"
-        />
-
-    <com.etebarian.meowbottomnavigation.MeowBottomNavigation
-        android:id="@+id/bottomNavigation1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/textview2"
-        android:layout_gravity="bottom"
-
-        android:layout_marginTop="335dp"
-        app:mbn_backgroundBottomColor="@color/backgroundBottomColor"
-        app:mbn_circleColor="@color/circleColor"
-        app:mbn_countBackgroundColor="@color/countBackgroundColor"
-        app:mbn_countTextColor="@color/countTextColor"
-        app:mbn_defaultIconColor="@color/defaultIconColor"
-        app:mbn_selectedIconColor="@color/selectedIconColor"
-        app:mbn_shadowColor="@color/shadowColor" />
-
-
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
