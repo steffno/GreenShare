@@ -21,6 +21,8 @@ public  class UtenteService {
         utenteLoggato = utente;
     }
 
-    public static void logout(){}
+    public static void logout(){
+        utenteLoggato = null;
+    }
     public Utente getUtenteLoggato(){return utenteLoggato;}
 }

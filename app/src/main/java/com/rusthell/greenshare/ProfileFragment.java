@@ -1,9 +1,11 @@
 package com.rusthell.greenshare;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -19,6 +21,7 @@ public class ProfileFragment extends Fragment {
     private TextView textViewNome;
     private TextView textViewCognome;
     private UtenteService utenteService;
+    private Button button;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -34,6 +37,7 @@ public class ProfileFragment extends Fragment {
         imageView = (ImageView) view.findViewById(R.id.imgProfilo);
         textViewNome = (TextView) view.findViewById(R.id.textNome);
         textViewCognome = (TextView) view.findViewById(R.id.textCognome);
+        button = (Button) view.findViewById(R.id.buttonEsci);
 
 
         //Setto il testo delle textView
@@ -41,6 +45,15 @@ public class ProfileFragment extends Fragment {
         System.out.println("Utente in ProfileFragment: " + utenteService.getUtenteLoggato().getNome());
         textViewNome.setText(utenteService.getUtenteLoggato().getNome());
         textViewCognome.setText(utenteService.getUtenteLoggato().getCognome());
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                utenteService.logout();
+                Intent intent = new Intent(getActivity(), MainActivity.class);
+                startActivity(intent);
+                getActivity().finish();
+            }
+        });
         return view;
     }
 
