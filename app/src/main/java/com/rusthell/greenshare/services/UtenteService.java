@@ -5,24 +5,41 @@ import android.widget.Toast;
 import com.rusthell.greenshare.MainActivity;
 import com.rusthell.greenshare.domain.Utente;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public  class UtenteService {
     private static Utente utenteLoggato;
-    public void login(String username, String password) throws Exception {
+    protected static List<Utente> utentiList = new ArrayList<Utente>();
+    static {
+        //utente 1
+        Utente utente = new Utente("Stefano", "Di Dionisio", "snesno", "1234", null);
+        utentiList.add(utente);
+        //utente 2
+        utente = new Utente("Nicolò", "Andreoni", "Nico", "1234", null);
+        utentiList.add(utente);
+        //utente 3
+        utente = new Utente("Martina", "Giansanti", "Marti", "1234", null);
+        utentiList.add(utente);
+    }
+    public Utente login(String username, String password) throws Exception {
         System.out.println(" Sono dentro utente service");
-        /*
-            Allora, adesso `e un login molto fittizzzio senza alcuna struttura dati, dove pero creiamo l`utente come oggetto
-         */
-        Utente utente = new Utente("Snesno","Di Dionisio", username, password, null);
-        if(username.equals("snesno") && password.equals("1234")){
-            System.out.println("Nome:" + username);
-        }else{
-            throw new Exception("bruh");
-        }
-        utenteLoggato = utente;
+            for (Utente u: utentiList) {
+                if(u.getUsername().equals(username) && u.getPassword().equals(password)){
+                    utenteLoggato = u;
+                    return u;
+                }
+            }
+        throw new Exception("Utente non esistente");
     }
 
     public static void logout(){
         utenteLoggato = null;
+    }
+
+    public void registra(String nome, String cognome, String username, String password){
+        Utente utente = new Utente(nome, cognome, username, password, null);
+        utentiList.add(utente);
     }
     public Utente getUtenteLoggato(){return utenteLoggato;}
 }

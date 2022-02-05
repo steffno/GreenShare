@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
         TextView username = (TextView) findViewById(R.id.username);
         TextView password = (TextView) findViewById(R.id.password);
         TextView oppure = (TextView) findViewById(R.id.oppure);
-        MaterialButton registerButton = (MaterialButton) findViewById(R.id.registerbtnR);
+        MaterialButton registerButton = (MaterialButton) findViewById(R.id.registerbtn);
 
         MaterialButton loginbtn = (MaterialButton) findViewById(R.id.loginbtn);
         loginbtn.setOnClickListener(new View.OnClickListener() {
@@ -37,8 +37,7 @@ public class MainActivity extends AppCompatActivity {
                 Utente utente = null;
                 try {
                     //senza usare facotry
-                    utenteService.login(username.getText().toString(), password.getText().toString());
-                    utente = utenteService.getUtenteLoggato();
+                    utente = utenteService.login(username.getText().toString(), password.getText().toString());
                     Toast.makeText(MainActivity.this, " Bella capo", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(MainActivity.this, Home.class);
                     System.out.println("Username prima della nuova schermata: " + username.getText().toString());
