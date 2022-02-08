@@ -4,8 +4,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background"
-    tools:context=".DashboardFragment"
-    android:orientation="vertical">
+    tools:context=".DashboardFragment">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/idRvViaggio"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
 
 </LinearLayout>
