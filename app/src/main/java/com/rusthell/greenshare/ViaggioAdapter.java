@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.rusthell.greenshare.domain.Viaggio;
 
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 public class ViaggioAdapter extends RecyclerView.Adapter<ViaggioAdapter.Viewholder>{
@@ -45,11 +46,12 @@ public class ViaggioAdapter extends RecyclerView.Adapter<ViaggioAdapter.Viewhold
             System.out.println("paro");
             holder.status.setBackgroundColor(0xFF00FF00);
         }else{
-           // holder.status.setColorFilter(R.color.quantum_vanillaredA700);
+            holder.status.setBackgroundColor(0xFFFF0000);
+
         }
         holder.partenza.setText(model.getPartenza());
         holder.arrivo.setText(model.getAndata());
-        holder.orario.setText(model.getOrario().toString());
+        holder.orario.setText(model.getOrario().format(DateTimeFormatter.ofPattern("HH:mm")));
         holder.data.setText(model.getData().toString());
     }
 
