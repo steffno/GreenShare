@@ -2,10 +2,8 @@ package com.rusthell.greenshare;
 
 
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -16,24 +14,18 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
-import com.etebarian.meowbottomnavigation.MeowBottomNavigation;
-import com.google.android.gms.common.api.Status;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.libraries.places.api.Places;
-import com.google.android.libraries.places.api.model.Place;
-import com.google.android.libraries.places.widget.Autocomplete;
-import com.google.android.libraries.places.widget.AutocompleteActivity;
-import com.google.android.libraries.places.widget.model.AutocompleteActivityMode;
 import com.rusthell.greenshare.domain.Utente;
 import com.rusthell.greenshare.services.UtenteService;
-
-import java.util.Arrays;
-import java.util.List;
+import com.rusthell.greenshare.ui.dashboard.DashboardFragment;
+import com.rusthell.greenshare.ui.home.HomeFragment;
+import com.rusthell.greenshare.ui.profile.ProfileFragment;
 
 import nl.joery.animatedbottombar.AnimatedBottomBar;
 
-public class Home extends AppCompatActivity {
+public class Home extends AppCompatActivity{
     //Inizializziamo le variabili
     /**
      * * Allora, la home deve essere lasciata come main activity (AppCompactActivity) essendo la parte
@@ -47,6 +39,12 @@ public class Home extends AppCompatActivity {
    private static final String TAG = "Home";
    private static final LatLngBounds LAT_LNG_BOUNDS = new LatLngBounds(
             new LatLng(-40, -168), new LatLng(71, 136));
+
+
+
+
+
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //Intent intent = getIntent();
@@ -69,14 +67,17 @@ public class Home extends AppCompatActivity {
                 switch(newTab.getId()){
                     case R.id.homeTab:
                         fragment = new HomeFragment();
+                        getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
                         break;
                     case R.id.dashboardTab:
                         fragment = new DashboardFragment();
+                        getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
                         Toast.makeText(Home.this, "Fragment Dashboard", Toast.LENGTH_SHORT).show();
                         break;
                     case R.id.profileTab:
                         //TODO Crea Fragment
                         fragment = new ProfileFragment();
+                        getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
                         Toast.makeText(Home.this, "Fragment Profilo", Toast.LENGTH_SHORT).show();
                         break;
                 }
@@ -163,7 +164,8 @@ public class Home extends AppCompatActivity {
         }
         */
 
+
+
+
     }
-
-
 }

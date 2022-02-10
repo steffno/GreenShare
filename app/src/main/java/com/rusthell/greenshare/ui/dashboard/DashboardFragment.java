@@ -1,4 +1,4 @@
-package com.rusthell.greenshare;
+package com.rusthell.greenshare.ui.dashboard;
 
 import android.os.Bundle;
 
@@ -13,6 +13,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.rusthell.greenshare.R;
+import com.rusthell.greenshare.ViaggioAdapter;
 import com.rusthell.greenshare.domain.Viaggio;
 
 import java.time.LocalDate;

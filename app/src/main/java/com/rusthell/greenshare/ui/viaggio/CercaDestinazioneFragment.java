@@ -1,38 +1,18 @@
-package com.rusthell.greenshare;
+package com.rusthell.greenshare.ui.viaggio;
 
-import static android.content.ContentValues.TAG;
-
-import android.annotation.SuppressLint;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
+import androidx.lifecycle.ViewModelProvider;
 
-import android.app.Activity;
 import android.os.Bundle;
-import android.os.Handler;
-import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
-import android.widget.EditText;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.google.android.gms.common.api.Status;
-import com.google.android.libraries.places.api.Places;
-import com.google.android.libraries.places.api.model.Place;
-import com.google.android.libraries.places.widget.AutocompleteSupportFragment;
-import com.google.android.libraries.places.widget.listener.PlaceSelectionListener;
-import com.rusthell.greenshare.databinding.FragmentCercaDestinazioneBinding;
-import com.rusthell.greenshare.services.UtenteService;
-
-import java.util.Arrays;
+import com.rusthell.greenshare.R;
 
 /**
  * An example full-screen activity that shows and hides the system UI (i.e.
@@ -42,6 +22,8 @@ public class CercaDestinazioneFragment extends Fragment {
     //Inizializzo
     private TextView textView;
     private TextView textView2;
+    private AutoCompleteTextView autoCompleteTextView;
+    private ViaggioViewModel viaggioViewModel;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -54,12 +36,20 @@ public class CercaDestinazioneFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_cerca_destinazione, container, false);
 
+        //instanziamo viewModel
+        viaggioViewModel = new ViewModelProvider(requireActivity()).get(ViaggioViewModel.class);
 
+
+
+        String [] CITTA = new String[]{
+                "Teramo", "L'Aquila", "Avezzano", "Chieti", "Pescara", "Forcella", "Val Vomano", "Basciano",
+                "Bazzano", "Montorio", "Valle Cupa", "Capestrano", "Navelli", "Popoli", "Ter", "Tera"};
 
         //places autocomplete
-        textView = (TextView) view.findViewById(R.id.textview);
-        textView2 = (TextView) view.findViewById(R.id.textview2);
-        Places.initialize(getActivity().getApplicationContext(), "AIzaSyBNTS0lqjxxnk7znMHw2GEBEf_-bjJypEo");
+       // textView = (TextView) view.findViewById(R.id.textview);
+       // textView2 = (TextView) view.findViewById(R.id.textview2);
+        autoCompleteTextView = (AutoCompleteTextView) view.findViewById(R.id.cercaDestinazioneAutocomplete);
+       /* Places.initialize(getActivity().getApplicationContext(), "AIzaSyBNTS0lqjxxnk7znMHw2GEBEf_-bjJypEo");
 
         //places by google
 
@@ -100,9 +90,34 @@ public class CercaDestinazioneFragment extends Fragment {
             }
         });
 
-        return view;
+        */
 
+        //adesso programmo l'autocomplete text view
+
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(getActivity(),
+                android.R.layout.simple_list_item_1, CITTA);
+        autoCompleteTextView.setThreshold(1);
+
+        //autoCompleteTextView.setText("0x");
+      //  autoCompleteTextView.requestFocus();
+       // InputMethodManager inputManager = (InputMethodManager)getActivity().getSystemService(INPUT_METHOD_SERVICE);
+       // inputManager.restartInput(autoCompleteTextView);
+        autoCompleteTextView.setAdapter(arrayAdapter);
+
+        autoCompleteTextView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                System.out.println("Hai premuto");
+                String selected = adapterView.getItemAtPosition(i).toString();
+                System.out.println("Hai premuto: " + selected);
+                viaggioViewModel.setDestinazione(selected);
+
+            }
+        });
+        return view;
     }
+
 
 
 }

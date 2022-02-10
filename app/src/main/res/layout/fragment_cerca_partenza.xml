@@ -3,15 +3,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/cercaDestinazioneFragment"
+    android:id="@+id/cercaPartenzaFragment"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="#002233"
     android:gravity="top"
     android:theme="@style/ThemeOverlay.GreenShare.FullscreenContainer"
-    tools:context=".ui.viaggio.CercaDestinazioneFragment">
+    tools:context=".ui.viaggio.CercaPartenzaFragment">
 
     <androidx.appcompat.widget.AppCompatAutoCompleteTextView
-        android:id="@+id/cercaDestinazioneAutocomplete"
+        android:id="@+id/cercaPartenzaAutocomplete"
         android:layout_width="355dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"

@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.rusthell.greenshare.domain.Viaggio;
 
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 public class ViaggioAdapter extends RecyclerView.Adapter<ViaggioAdapter.Viewholder>{
@@ -49,7 +50,7 @@ public class ViaggioAdapter extends RecyclerView.Adapter<ViaggioAdapter.Viewhold
         }
         holder.partenza.setText(model.getPartenza());
         holder.arrivo.setText(model.getAndata());
-        holder.orario.setText(model.getOrario().toString());
+        holder.orario.setText(model.getOrario().format(DateTimeFormatter.ofPattern("HH:mm")));
         holder.data.setText(model.getData().toString());
     }
 
