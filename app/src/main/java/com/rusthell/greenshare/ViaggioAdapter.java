@@ -46,7 +46,8 @@ public class ViaggioAdapter extends RecyclerView.Adapter<ViaggioAdapter.Viewhold
             System.out.println("paro");
             holder.status.setBackgroundColor(0xFF00FF00);
         }else{
-           // holder.status.setColorFilter(R.color.quantum_vanillaredA700);
+            holder.status.setBackgroundColor(0xFFFF0000);
+
         }
         holder.partenza.setText(model.getPartenza());
         holder.arrivo.setText(model.getAndata());
