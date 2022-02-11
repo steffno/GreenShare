@@ -40,7 +40,9 @@ public class ViaggioViewModel extends ViewModel {
         data.setValue(data1);
     }
 
-    public MutableLiveData<ArrayList<Viaggio>> getViaggi
+    public MutableLiveData<ArrayList<Viaggio>> getViaggi(){
+        return null;
+    }
 
 
 }
