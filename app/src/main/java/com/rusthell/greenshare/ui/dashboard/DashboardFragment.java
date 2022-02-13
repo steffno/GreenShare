@@ -32,11 +32,11 @@ public class DashboardFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         viaggioArrayList = new ArrayList<>();
-        viaggioArrayList.add(new Viaggio("Teramo", "L'Aquila", LocalDate.now(), LocalTime.now()));
-        viaggioArrayList.add(new Viaggio("Pescara", "L'Aquila", LocalDate.now(), LocalTime.now()));
-        viaggioArrayList.add(new Viaggio("Capestrano", "L'Aquila", LocalDate.now(), LocalTime.now()));
-        viaggioArrayList.add(new Viaggio("Giulianova", "L'Aquila", LocalDate.now(), LocalTime.now()));
-        viaggioArrayList.add(new Viaggio("Avezzano", "L'Aquila", LocalDate.now(), LocalTime.now()));
+        viaggioArrayList.add(new Viaggio("Teramo", "L'Aquila", LocalDate.now(), LocalTime.now(), false));
+        viaggioArrayList.add(new Viaggio("Pescara", "L'Aquila", LocalDate.now(), LocalTime.now(), false));
+        viaggioArrayList.add(new Viaggio("Capestrano", "L'Aquila", LocalDate.now(), LocalTime.now(), true));
+        viaggioArrayList.add(new Viaggio("Giulianova", "L'Aquila", LocalDate.now(), LocalTime.now(), true));
+        viaggioArrayList.add(new Viaggio("Avezzano", "L'Aquila", LocalDate.now(), LocalTime.now(), true));
     }
 
     @Override

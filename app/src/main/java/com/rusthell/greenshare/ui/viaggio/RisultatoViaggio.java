@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment;
 
 import com.rusthell.greenshare.R;
 
-public class RisultatoVieggio extends Fragment {
+public class RisultatoViaggio extends Fragment {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

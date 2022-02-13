@@ -1,27 +1,32 @@
 package com.rusthell.greenshare.domain;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.ArrayList;
 
-public class Viaggio {
-    private String andata;
+public class Viaggio implements Serializable {
+    private String arrivo;
     private String partenza;
     private LocalDate data;
     private LocalTime orario;
+    private Boolean concluso;
+    private ArrayList<String> tappe = new ArrayList<>();
 
-    public Viaggio(String andata, String partenza, LocalDate data, LocalTime orario) {
-        this.andata = andata;
+    public Viaggio(String arrivo, String partenza, LocalDate data, LocalTime orario, Boolean concluso) {
+        this.arrivo = arrivo;
         this.partenza = partenza;
         this.data = data;
         this.orario = orario;
+        this.concluso = concluso;
     }
 
-    public String getAndata() {
-        return andata;
+    public String getArrivo() {
+        return arrivo;
     }
 
-    public void setAndata(String andata) {
-        this.andata = andata;
+    public void setArrivo(String andata) {
+        this.arrivo = andata;
     }
 
     public String getPartenza() {
@@ -44,7 +49,24 @@ public class Viaggio {
         return orario;
     }
 
+    public Boolean getConcluso() {
+        return concluso;
+    }
+
+    public void setConcluso(Boolean concluso) {
+        this.concluso = concluso;
+    }
+
     public void setOrario(LocalTime orario) {
         this.orario = orario;
     }
+
+    public ArrayList<String> getTappe(){
+        return tappe;
+    }
+
+    public void setTappe(ArrayList<String> tappe){
+        this.tappe = tappe;
+    }
+
 }

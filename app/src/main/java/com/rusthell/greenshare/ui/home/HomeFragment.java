@@ -14,11 +14,13 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.rusthell.greenshare.ui.viaggio.CercaDestinazioneFragment;
 import com.rusthell.greenshare.R;
 import com.rusthell.greenshare.services.UtenteService;
 import com.rusthell.greenshare.ui.viaggio.CercaPartenzaFragment;
+import com.rusthell.greenshare.ui.viaggio.ViaggiDisponibiliFragment;
 import com.rusthell.greenshare.ui.viaggio.ViaggioViewModel;
 
 import java.time.LocalDate;
@@ -115,9 +117,32 @@ public class HomeFragment extends Fragment {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //deve aprire il nuovo frammento, e cercare il viaggio
+                try {
+                    System.out.println("HAI CLICCATO IL BOTTONE");
+                    viaggioViewModel.getViaggi();
+
+                    System.out.println("Dopo viaggio view model get viaggi in HomeFragment");
+                    Fragment viaggiDisponibiliFragment = new ViaggiDisponibiliFragment();
+                    fragmentManager = getActivity().getSupportFragmentManager();
+                    fragmentManager.beginTransaction()
+                            .setCustomAnimations(R.anim.slide_in_bottom,
+                                    R.anim.slide_out_top,
+                                    R.anim.slide_in_top,
+                                    R.anim.slide_out_bottom)
+                            .replace(R.id.fragment_container, viaggiDisponibiliFragment)
+                            .addToBackStack("HomeFragment")
+                            .commit();
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
 
             }
+        });
+
+        viaggioViewModel.getViaggioTrovato().observe(getViewLifecycleOwner(), set ->{
+            if(viaggioViewModel.getViaggioTrovato().getValue() == false)
+            Toast.makeText(getActivity(), "Nessun viaggio trovato", Toast.LENGTH_LONG).show();
         });
         return view;
     }

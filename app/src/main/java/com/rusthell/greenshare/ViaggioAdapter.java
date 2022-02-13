@@ -1,16 +1,19 @@
 package com.rusthell.greenshare;
 
 import android.content.Context;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.rusthell.greenshare.domain.Viaggio;
+import com.rusthell.greenshare.ui.viaggio.InfoFragment;
 
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -33,7 +36,6 @@ public class ViaggioAdapter extends RecyclerView.Adapter<ViaggioAdapter.Viewhold
     public ViaggioAdapter.Viewholder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         //per inflatare il layout di ogni item nel recyclerview
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.viaggio_data_container, parent, false);
-
         return new Viewholder(view);
     }
 
@@ -42,17 +44,38 @@ public class ViaggioAdapter extends RecyclerView.Adapter<ViaggioAdapter.Viewhold
         Viaggio model = viaggioArrayList.get(position);
         System.out.println("In viaggio adapter il numero di posizione è:" + position);
 
-        if(position % 2 == 0){
-            System.out.println("paro");
+        if(model.getConcluso() == false){
+            System.out.println("concluso");
             holder.status.setBackgroundColor(0xFF00FF00);
         }else{
             holder.status.setBackgroundColor(0xFFFF0000);
 
         }
         holder.partenza.setText(model.getPartenza());
-        holder.arrivo.setText(model.getAndata());
+        holder.arrivo.setText(model.getArrivo());
         holder.orario.setText(model.getOrario().format(DateTimeFormatter.ofPattern("HH:mm")));
         holder.data.setText(model.getData().toString());
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                System.out.println("hai toccato l'item con partenza: " + model.getPartenza());
+                AppCompatActivity activity = (AppCompatActivity) view.getContext();
+                //se il viaggio è cocluso apre la schermata di recensione, se ancora non lo è apre la schermata di modifica\
+                //creo un bundle per passare i dati direttament al frammento contenente tutte le info del viaggio
+                Bundle args = new Bundle();
+                args.putSerializable("viaggio", model);
+              //  if(model.getConcluso() == false){
+                    Fragment fragment = new InfoFragment();
+                    fragment.setArguments(args);
+                    activity.getSupportFragmentManager().
+                            beginTransaction().
+                            setReorderingAllowed(true).
+                            addSharedElement(view, "anim1").
+                            replace(R.id.fragment_container, fragment).
+                            commit();
+               // }
+            }
+        });
     }
 
     @Override
@@ -61,7 +84,8 @@ public class ViaggioAdapter extends RecyclerView.Adapter<ViaggioAdapter.Viewhold
     }
 
 
-     public class Viewholder extends RecyclerView.ViewHolder {
+
+    public class Viewholder extends RecyclerView.ViewHolder {
         private TextView partenza, arrivo, data, orario;
          private View status;
 
