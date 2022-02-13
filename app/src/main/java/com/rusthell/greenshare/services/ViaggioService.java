@@ -1,5 +1,7 @@
 package com.rusthell.greenshare.services;
 
+import com.rusthell.greenshare.domain.Utente;
+import com.rusthell.greenshare.domain.UtentiPerViaggio;
 import com.rusthell.greenshare.domain.Viaggio;
 
 import java.time.LocalDate;
@@ -10,7 +12,9 @@ import java.util.List;
 
 public class ViaggioService {
 
-    private static List<Viaggio> viaggi = new ArrayList<>();
+    private static ArrayList<Viaggio> viaggi = new ArrayList<>();
+    private static ArrayList<UtentiPerViaggio> utentiPerViaggio = new ArrayList<>();
+    UtenteService utenteService = new UtenteService();
 
     static{
         //aggiungo qualche viaggio
@@ -18,10 +22,22 @@ public class ViaggioService {
         //a questo viaggio specifico delle tappe
         ArrayList<String> tappe = new ArrayList<String>(Arrays.asList("Forcella", "Val vomano", "Basciano"));
         viaggio.setTappe(tappe);
+        //creo association class
+        UtentiPerViaggio temp = new UtentiPerViaggio();
+        temp.setViaggio(viaggio);
+        utentiPerViaggio.add(temp);
         viaggi.add(viaggio);
+
         viaggio = new Viaggio("Avezzano", "Chieti", LocalDate.now(), LocalTime.now(), false);
+        //creo association class
+        temp = new UtentiPerViaggio();
+        temp.setViaggio(viaggio);
         viaggi.add(viaggio);
-        viaggio = new Viaggio("Pescara", "Forcella", LocalDate.now(), LocalTime.now(), false);
+
+        viaggio = new Viaggio("Pescara", "Forcella", LocalDate.now(), LocalTime.now(), true);
+        //creo association class
+        temp = new UtentiPerViaggio();
+        temp.setViaggio(viaggio);
         viaggi.add(viaggio);
     }
 
@@ -44,4 +60,30 @@ public class ViaggioService {
         return localViaggio;
     }
 
+    public static ArrayList<Viaggio> getViaggi(Utente utente) {
+        ArrayList<Viaggio> viaggiPerUtente = new ArrayList<>();
+        for(UtentiPerViaggio uV : utentiPerViaggio){
+            if(uV.getGuidatore() == utente){
+                viaggiPerUtente.add(uV.getViaggio());
+            }
+        }
+        return viaggiPerUtente;
+    }
+
+    public void aggiungiViaggio(Viaggio viaggio){
+        /*
+
+        Utente utente = utenteService.getUtenteLoggato();
+        ArrayList<Viaggio> viaggiPerUtente = utente.getViaggi();
+        viaggiPerUtente.add(viaggio);
+        utente.setViaggi(viaggiPerUtente);*/
+        //sopra era senza association class, ma vorrei farlo con essa quindi userò la seguente implementazione
+
+        for(UtentiPerViaggio uV : utentiPerViaggio){
+            if (uV.getViaggio() == viaggio){
+                //allora posso aggiungere il "passeggero" al viaggio
+                uV.aggiungiPasseggero(utenteService.getUtenteLoggato());
+            }
+        }
+    }
 }

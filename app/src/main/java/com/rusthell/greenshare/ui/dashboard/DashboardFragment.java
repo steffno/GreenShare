@@ -16,6 +16,8 @@ import android.widget.TextView;
 import com.rusthell.greenshare.R;
 import com.rusthell.greenshare.ViaggioAdapter;
 import com.rusthell.greenshare.domain.Viaggio;
+import com.rusthell.greenshare.services.UtenteService;
+import com.rusthell.greenshare.services.ViaggioService;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -25,18 +27,16 @@ import java.util.ArrayList;
 public class DashboardFragment extends Fragment {
 
     private RecyclerView viaggioRV;
+    private UtenteService utenteService = new UtenteService();
     //ArrayList per salvare i dati
     private ArrayList<Viaggio> viaggioArrayList;
+    private ViaggioService viaggioService = new ViaggioService();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        viaggioArrayList = new ArrayList<>();
-        viaggioArrayList.add(new Viaggio("Teramo", "L'Aquila", LocalDate.now(), LocalTime.now(), false));
-        viaggioArrayList.add(new Viaggio("Pescara", "L'Aquila", LocalDate.now(), LocalTime.now(), false));
-        viaggioArrayList.add(new Viaggio("Capestrano", "L'Aquila", LocalDate.now(), LocalTime.now(), true));
-        viaggioArrayList.add(new Viaggio("Giulianova", "L'Aquila", LocalDate.now(), LocalTime.now(), true));
-        viaggioArrayList.add(new Viaggio("Avezzano", "L'Aquila", LocalDate.now(), LocalTime.now(), true));
+        viaggioArrayList = viaggioService.getViaggi(utenteService.getUtenteLoggato());
+
     }
 
     @Override

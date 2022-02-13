@@ -52,7 +52,7 @@ public class HomeFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_home, container, false);
         TextView myAwesomeTextView = (TextView) view.findViewById(R.id.ciao);
-        myAwesomeTextView.setText("Benvenuto " + utenteService.getUtenteLoggato().getNome());
+        myAwesomeTextView.setText("Ciao " + utenteService.getUtenteLoggato().getNome());
          viaggioViewModel = new ViewModelProvider(requireActivity()).get(ViaggioViewModel.class);
         textView = (TextView) view.findViewById(R.id.dataViaggio);
         editText = (EditText) view.findViewById(R.id.cercaEditText);

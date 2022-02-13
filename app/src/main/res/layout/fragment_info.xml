@@ -44,6 +44,23 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
+        android:id="@+id/textView"
+        android:layout_width="115dp"
+        android:layout_height="41dp"
+        android:layout_below="@+id/textViewInfo"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="296dp"
+        android:layout_weight="1"
+        android:text="Tappe:"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/recyclerViewTappe"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewPartenzaInfo1" />
+
+    <TextView
         android:id="@+id/textViewPartenzaInfo1"
         android:layout_width="115dp"
         android:layout_height="41dp"
@@ -116,13 +133,96 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewTappe"
-        android:layout_width="match_parent"
-        android:layout_height="139dp"
+        android:layout_width="360dp"
+        android:layout_height="138dp"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="48dp"
+        android:layout_marginEnd="20dp"
         android:layout_marginBottom="392dp"
+        android:foregroundGravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewPartenzaInfo1" />
+
+    <TextView
+        android:id="@+id/textViewDataInfo"
+        android:layout_width="139dp"
+        android:layout_height="41dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="256dp"
+        android:layout_weight="1"
+        android:text="Partenza il"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/recyclerViewTappe" />
+
+    <TextView
+        android:id="@+id/textViewOrarioInfo"
+        android:layout_width="139dp"
+        android:layout_height="41dp"
+        android:layout_marginStart="101dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="16dp"
+        android:layout_weight="1"
+        android:text="Alle"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textViewDataInfo"
+        app:layout_constraintTop_toBottomOf="@+id/recyclerViewTappe" />
+
+    <TextView
+        android:id="@+id/textViewDataInfo1"
+        android:layout_width="139dp"
+        android:layout_height="41dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="88dp"
+        android:layout_marginEnd="256dp"
+        android:layout_weight="1"
+        android:text="Partenza il"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/recyclerViewTappe" />
+
+    <TextView
+        android:id="@+id/textViewOrarioInfo1"
+        android:layout_width="139dp"
+        android:layout_height="41dp"
+        android:layout_marginStart="101dp"
+        android:layout_marginTop="88dp"
+        android:layout_marginEnd="16dp"
+        android:layout_weight="1"
+        android:text="Alle"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/textViewDataInfo"
+        app:layout_constraintTop_toBottomOf="@+id/recyclerViewTappe" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="158dp"
+        android:layout_marginTop="250dp"
+        android:layout_marginEnd="159dp"
+        android:layout_marginBottom="94dp"
+        android:text="Prenota"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/recyclerViewTappe" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

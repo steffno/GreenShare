@@ -1,5 +1,7 @@
 package com.rusthell.greenshare;
 
+import static androidx.fragment.app.FragmentManager.POP_BACK_STACK_INCLUSIVE;
+
 import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,6 +12,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.rusthell.greenshare.domain.Viaggio;
@@ -64,16 +67,14 @@ public class ViaggioAdapter extends RecyclerView.Adapter<ViaggioAdapter.Viewhold
                 //creo un bundle per passare i dati direttament al frammento contenente tutte le info del viaggio
                 Bundle args = new Bundle();
                 args.putSerializable("viaggio", model);
-              //  if(model.getConcluso() == false){
                     Fragment fragment = new InfoFragment();
                     fragment.setArguments(args);
                     activity.getSupportFragmentManager().
                             beginTransaction().
                             setReorderingAllowed(true).
-                            addSharedElement(view, "anim1").
+                            addSharedElement(view, "anim1").addToBackStack("fragment_home").
                             replace(R.id.fragment_container, fragment).
                             commit();
-               // }
             }
         });
     }

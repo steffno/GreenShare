@@ -4,13 +4,16 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 public class Utente implements Serializable {
-    String nome;
-    String cognome;
-    String username;
-    String password;
-    Veicolo veicolo;
+    private String nome;
+    private String cognome;
+    private String username;
+    private String password;
+    private Veicolo veicolo;
+    private ArrayList<Viaggio> viaggi = new ArrayList<>();
+
 
     public Utente(String nome, String cognome, String username, String password, Veicolo veicolo) {
         this.nome = nome;
@@ -60,4 +63,11 @@ public class Utente implements Serializable {
         this.veicolo = veicolo;
     }
 
+    public ArrayList<Viaggio> getViaggi() {
+        return viaggi;
+    }
+
+    public void setViaggi(ArrayList<Viaggio> viaggi) {
+        this.viaggi = viaggi;
+    }
 }
