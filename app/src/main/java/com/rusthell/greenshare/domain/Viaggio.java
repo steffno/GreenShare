@@ -11,14 +11,16 @@ public class Viaggio implements Serializable {
     private LocalDate data;
     private LocalTime orario;
     private Boolean concluso;
+    private Utente guidatore;
     private ArrayList<String> tappe = new ArrayList<>();
 
-    public Viaggio(String arrivo, String partenza, LocalDate data, LocalTime orario, Boolean concluso) {
+    public Viaggio(String arrivo, String partenza, LocalDate data, LocalTime orario, Boolean concluso, Utente guidatore) {
         this.arrivo = arrivo;
         this.partenza = partenza;
         this.data = data;
         this.orario = orario;
         this.concluso = concluso;
+        this.guidatore = guidatore;
     }
 
     public String getArrivo() {
@@ -69,4 +71,11 @@ public class Viaggio implements Serializable {
         this.tappe = tappe;
     }
 
+    public Utente getGuidatore() {
+        return guidatore;
+    }
+
+    public void setGuidatore(Utente guidatore) {
+        this.guidatore = guidatore;
+    }
 }

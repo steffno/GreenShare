@@ -6,7 +6,9 @@ import android.transition.TransitionInflater;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -14,6 +16,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.rusthell.greenshare.R;
 import com.rusthell.greenshare.domain.Viaggio;
+import com.rusthell.greenshare.services.UtenteService;
+import com.rusthell.greenshare.services.ViaggioService;
 
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -24,7 +28,9 @@ public class InfoFragment extends Fragment {
 
     private Viaggio viaggio;
     private TextView textView1, textView2, textView3, textView4;
+    private Button button;
     private RecyclerView tappeRV;
+    private UtenteService utenteService = new UtenteService();
     private ArrayList<String> tappe =  new ArrayList<>();
 
     @Override
@@ -56,6 +62,18 @@ public class InfoFragment extends Fragment {
         textView2.setText(viaggio.getArrivo());
         textView3.setText(viaggio.getData().toString());
         textView4.setText(viaggio.getOrario().format(DateTimeFormatter.ofPattern("HH:mm")));
+        button = view.findViewById(R.id.buttonPrenotaViaggio);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ViaggioService viaggioService = new ViaggioService();
+                try {
+                    viaggioService.prenotaViaggio(viaggio, utenteService.getUtenteLoggato());
+                } catch (Exception e) {
+                    Toast.makeText(getActivity(), "Hai già prenotato questo viaggio", Toast.LENGTH_LONG).show();
+                }
+            }
+        });
 
 
         System.out.println("SOno dentro on create view di InfoFragment");

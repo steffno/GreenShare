@@ -10,7 +10,7 @@ import java.util.List;
 
 public  class UtenteService {
     private static Utente utenteLoggato;
-    protected static List<Utente> utentiList = new ArrayList<Utente>();
+    protected static ArrayList<Utente> utentiList = new ArrayList<Utente>();
     static {
         //utente 1
         Utente utente = new Utente("Stefano", "Di Dionisio", "snesno", "1234", null);
@@ -42,4 +42,8 @@ public  class UtenteService {
         utentiList.add(utente);
     }
     public Utente getUtenteLoggato(){return utenteLoggato;}
+
+    public ArrayList<Utente> getUtenti (){
+        return utentiList;
+    }
 }

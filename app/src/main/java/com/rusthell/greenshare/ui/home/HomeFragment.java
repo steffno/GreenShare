@@ -16,6 +16,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.rusthell.greenshare.services.ViaggioService;
 import com.rusthell.greenshare.ui.viaggio.CercaDestinazioneFragment;
 import com.rusthell.greenshare.R;
 import com.rusthell.greenshare.services.UtenteService;
@@ -34,7 +35,7 @@ public class HomeFragment extends Fragment {
     private EditText editText, editText2;
     private ViaggioViewModel viaggioViewModel;
     private TextView textView;
-    private Button button;
+    private Button button, button2;
     private UtenteService utenteService = new UtenteService();
     FragmentManager fragmentManager;
 
@@ -137,6 +138,17 @@ public class HomeFragment extends Fragment {
                     e.printStackTrace();
                 }
 
+            }
+        });
+
+        button2 = (Button) view.findViewById(R.id.bottoneCrea);
+        button2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                System.out.println("HAI CLICCATO IL BOTTONE CREA");
+                ViaggioService viaggioService = new ViaggioService();
+                viaggioService.creaViaggio(viaggioViewModel.getDestinazione().getValue(),
+                        viaggioViewModel.getPartenza().getValue(), viaggioViewModel.getData().getValue(), utenteService.getUtenteLoggato());
             }
         });
 

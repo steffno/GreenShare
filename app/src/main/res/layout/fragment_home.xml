@@ -124,4 +124,32 @@
             app:layout_constraintVertical_bias="0.647" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="177dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="177dp"
+        android:text="OPPURE"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/box_cerca" />
+
+    <Button
+        android:id="@+id/bottoneCrea"
+        android:layout_width="208dp"
+        android:layout_height="54dp"
+        android:layout_marginStart="102dp"
+        android:layout_marginTop="22dp"
+        android:layout_marginEnd="101dp"
+        android:layout_marginBottom="87dp"
+        android:background="@drawable/search_box"
+        android:text="CREALO!"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
 </androidx.constraintlayout.widget.ConstraintLayout>

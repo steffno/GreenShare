@@ -12,7 +12,6 @@ public class Utente implements Serializable {
     private String username;
     private String password;
     private Veicolo veicolo;
-    private ArrayList<Viaggio> viaggi = new ArrayList<>();
 
 
     public Utente(String nome, String cognome, String username, String password, Veicolo veicolo) {
@@ -63,11 +62,5 @@ public class Utente implements Serializable {
         this.veicolo = veicolo;
     }
 
-    public ArrayList<Viaggio> getViaggi() {
-        return viaggi;
-    }
 
-    public void setViaggi(ArrayList<Viaggio> viaggi) {
-        this.viaggi = viaggi;
-    }
 }
