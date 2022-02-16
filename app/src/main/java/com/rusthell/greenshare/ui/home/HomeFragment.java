@@ -149,6 +149,7 @@ public class HomeFragment extends Fragment {
                 ViaggioService viaggioService = new ViaggioService();
                 viaggioService.creaViaggio(viaggioViewModel.getDestinazione().getValue(),
                         viaggioViewModel.getPartenza().getValue(), viaggioViewModel.getData().getValue(), utenteService.getUtenteLoggato());
+                Toast.makeText(getActivity(), "Il viaggio è stato creato", Toast.LENGTH_LONG).show();
             }
         });
 

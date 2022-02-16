@@ -24,22 +24,16 @@ public class ViaggioService {
         //creo association class
         UtentePerViaggio temp = new UtentePerViaggio();
         temp.setViaggio(viaggio);
-        temp.setPasseggero(utenteService.getUtenteLoggato());
+        temp.setPasseggero(utenteService.getUtenti().get(2));
         utentiPerViaggio.add(temp);
         viaggi.add(viaggio);
 
         //VIAGGIO 2
         viaggio = new Viaggio("Avezzano", "Chieti", LocalDate.now(), LocalTime.now(), false, utenteService.getUtenti().get(2));
-        //creo association class
-        temp = new UtentePerViaggio();
-        temp.setViaggio(viaggio);
         viaggi.add(viaggio);
 
         //VIAGGIO 3
         viaggio = new Viaggio("Pescara", "Forcella", LocalDate.now(), LocalTime.now(), true, utenteService.getUtenti().get(2));
-        //creo association class
-        temp = new UtentePerViaggio();
-        temp.setViaggio(viaggio);
         viaggi.add(viaggio);
     }
 
@@ -78,18 +72,12 @@ public class ViaggioService {
     }
 
     public void prenotaViaggio(Viaggio viaggio, Utente utente) throws Exception {
-        /*
-
-        Utente utente = utenteService.getUtenteLoggato();
-        ArrayList<Viaggio> viaggiPerUtente = utente.getViaggi();
-        viaggiPerUtente.add(viaggio);
-        utente.setViaggi(viaggiPerUtente);*/
-        //sopra era senza association class, ma vorrei farlo con essa quindi userò la seguente implementazione
 
         if(!utentiPerViaggio.contains(utente)){
             UtentePerViaggio temp = new UtentePerViaggio();
             temp.setPasseggero(utente);
             temp.setViaggio(viaggio);
+            utentiPerViaggio.add(temp);
         }else{
             throw new Exception("Utente già presente con questo viaggio");
         }

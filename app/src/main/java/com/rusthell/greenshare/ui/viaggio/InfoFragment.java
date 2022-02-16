@@ -69,8 +69,9 @@ public class InfoFragment extends Fragment {
                 ViaggioService viaggioService = new ViaggioService();
                 try {
                     viaggioService.prenotaViaggio(viaggio, utenteService.getUtenteLoggato());
+                    Toast.makeText(getActivity(), "Hai prenotato questo viaggio", Toast.LENGTH_LONG).show();
                 } catch (Exception e) {
-                    Toast.makeText(getActivity(), "Hai già prenotato questo viaggio", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity(), "Hai GIA' prenotato questo viaggio", Toast.LENGTH_LONG).show();
                 }
             }
         });

@@ -6,6 +6,7 @@ public class UtentePerViaggio {
     private Viaggio viaggio;
     private Utente passeggero;
     private Boolean partito = false;
+    private Boolean arrivato = false;
 
     public Utente getPasseggero() {
         return passeggero;
@@ -30,8 +31,6 @@ public class UtentePerViaggio {
     public void setArrivato(Boolean arrivato) {
         this.arrivato = arrivato;
     }
-
-    private Boolean arrivato = false;
 
     public Viaggio getViaggio() {
         return viaggio;
